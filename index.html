@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./bootstrap-5.0.2-dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="./styles//global.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>TMDB</title>
+  </head>
+  <body>
+    <div class="app">
+      <div class="main-header">
+        <!-- max view header -->
+        <div class="container d-lg-block d-none">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+              <a href="/" class="main-header-logo">
+                <img src="./assets/icons/header_logo.svg" alt="logo" />
+              </a>
+              <a href="/movies" class="nav-button">Movies</a>
+              <a href="/tvs" class="nav-button">TV Shows </a>
+              <a href="/people" class="nav-button">People</a>
+            </div>
+
+            <div class="d-flex align-items-center">
+              <a href="/login" class="nav-button">Đăng nhập</a>
+              <a href="/signup" class="nav-button">Tham gia TMDB</a>
+              <a type="button" class="nav-button search-button">
+                <i
+                  class="fa-solid fa-magnifying-glass fa-lg"
+                  style="color: rgb(1, 180, 228)"
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- mobile header -->
+        <div class="container-fluid d-lg-none position-relative">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="col-2 align-items-center">
+              <a type="button" class="nav-button search-button bars">
+                <i class="fa-solid fa-bars fa-lg" style="color: #ffffff"></i>
+              </a>
+            </div>
+            <div class="d-flex align-items-center justify-content-center">
+              <a href="/" class="main-header-logo_mobile">
+                <img src="./assets/icons/footer_logo.svg" alt="logo" />
+              </a>
+            </div>
+
+            <div class="col-2 d-flex align-items-center justify-content-end">
+              <a type="button" class="nav-button search-button">
+                <i class="fa-solid fa-user fa-lg" style="color: #ffffff"></i>
+              </a>
+              <a type="button" class="nav-button search-button">
+                <i
+                  class="fa-solid fa-magnifying-glass fa-lg"
+                  style="color: rgb(1, 180, 228)"
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile-nav-sidebar d-lg-none">
+          <ul>
+            <li>
+              <a href="/movies" class="nav-button">Movies</a>
+            </li>
+            <li>
+              <a href="/tvs" class="nav-button">TV Shows</a>
+            </li>
+            <li>
+              <a href="/people" class="nav-button">People</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="container-lg no-padding">
+        <!-- Home Search -->
+        <div class="home-search">
+          <div class="home-search-content p-lg-5 p-3">
+            <div class="title">
+              <h2>Welcome.</h2>
+              <h3>
+                Millions of movies, TV shows and people to discover. Explore
+                now.
+              </h3>
+            </div>
+            <div class="search">
+              <form action="">
+                <div class="input-wrapper">
+                  <input type="text" placeholder="Search..." />
+
+                  <button>Search</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Home Trending -->
+        <div class="home-trending page-section">
+          <div class="home-trending-bg"></div>
+          <div class="section-header">
+            <h2>Trending</h2>
+          </div>
+          <div
+            class="trending-scroller d-flex flex-nowrap overflow-y-scroll"
+          ></div>
+        </div>
+
+        <!-- Latest Trailer -->
+        <div class="latest-trailer page-section">
+          <div class="section-header">
+            <h2>Latest trailer</h2>
+          </div>
+          <div
+            class="latest-trailer-scroller d-flex flex-nowrap overflow-y-scroll"
+          ></div>
+        </div>
+      </div>
+      <div class="main-footer"></div>
+    </div>
+  </body>
+  <script src="./bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+  <script src="./scripts/home.js"></script>
+</html>
