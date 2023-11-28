@@ -52,7 +52,7 @@ const trending = {
       month: "short",
       day: "numeric",
     };
-    fetch("http://localhost:5050/api/movies", {
+    fetch("https://tmdb-backend-g5qb.onrender.com/api/movies", {
       method: "GET",
     })
       .then((res) => {

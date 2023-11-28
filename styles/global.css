@@ -276,6 +276,7 @@ a:hover {
 /* Trending */
 .home-trending {
   position: relative;
+  min-height: 400px;
 }
 
 .home-trending-bg {
