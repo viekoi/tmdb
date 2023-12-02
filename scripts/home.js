@@ -52,7 +52,7 @@ const trending = {
       month: "short",
       day: "numeric",
     };
-    fetch("https://tmdb-backend-g5qb.onrender.com/api/movies", {
+    fetch("https://tmdb-backend-phi.vercel.app/api/movies", {
       method: "GET",
     })
       .then((res) => {
@@ -90,41 +90,93 @@ const trending = {
 
 trending.start();
 
-
 const latestTrailerScroller = $(".latest-trailer-scroller");
-const latestTrailer = $(".latest-trailer")
+const backDropBg = $(".backdrop-bg");
 
-const LatestTrailer = {
+const latestTrailer = {
   mountUi: function () {
     const options = {
       year: "numeric",
       month: "short",
       day: "numeric",
     };
-    fetch("http://localhost:5050/api/movies", {
+    fetch("https://tmdb-backend-phi.vercel.app/api/movies", {
       method: "GET",
     })
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        data.forEach((movie) => {
-          const dt = new Date(movie.releasedDay);
+        backDropBg.style.backgroundImage = `url("${data[0].backDropImageUrl}")`;
+        data.forEach((movie, index) => {
           const markup = `
-       <a href="/movies/${movie.id}" class="movie-card">
-        <img class="movie-card-img" src="${
-          movie.imageUrl
-        }" alt="Card image cap">
-        <div class="movie-card-body">
-          <h5 class="movie-card-title">${movie.title}</h5>
-          <p class="movie-card-text">${dt.toLocaleDateString(
-            "en-US",
-            options
-          )}</p>
-        </div 
-       </a>
+          <div class="trailer-card" data-index=${index}>
+         <div class="img-container">
+           <img class="trailer-card-img" src="${
+             movie.backDropImageUrl
+           }" alt="Card image cap">
+           <i class="fa-solid fa-play fa-2xl icon"></i>
+         </div>
+         <a href="/movies/${movie.id}" class="trailer-card-body">
+           <h5 class="trailer-card-title">${movie.title} trailer</h5>
+           <p class="trailer-card-text">${new Date(
+             movie.releasedDay
+           ).toLocaleDateString("en-US", options)}</p>
+         </a>
+       </div>
       `;
           latestTrailerScroller.insertAdjacentHTML(`beforeend`, markup);
+        });
+
+        const trailerCards = [
+          ...$$(
+            ".latest-trailer-scroller .trailer-card"
+          ),
+        ];
+        trailerCards.forEach((card) => {
+          const currentIndex = Number(card.dataset.index);
+          const playModal = $(
+            ".latest-trailer .play-modal"
+          );
+          const playBox = $(".latest-trailer .play-box");
+          const playModalIframe = $(
+            ".latest-trailer .play-box iframe"
+          );
+          const closeButton = $(".play-close");
+          card.addEventListener("mouseenter", () => {
+            backDropBg.style.backgroundImage = `url("${data[currentIndex].backDropImageUrl}")`;
+          });
+
+          const onClose = () => {
+            playModal.classList.remove("d-flex");
+            playBox.classList.remove("d-flex");
+            playModalIframe.src = "";
+          };
+
+          const onOpen = () => {
+            playModal.classList.add("d-flex");
+            playBox.classList.add("d-flex");
+          };
+
+          playModal.addEventListener("click", () => {
+            onClose();
+          });
+
+          closeButton.addEventListener("click", () => {
+            onClose();
+          });
+
+          playBox.addEventListener("click", (e) => {
+            e.stopPropagation();
+          });
+
+          card.addEventListener("click", (e) => {
+            const imgContainer = e.target.closest(".img-container");
+            if (imgContainer) {
+              playModalIframe.src = data[currentIndex].trailerUrl;
+              onOpen();
+            }
+          });
         });
       })
       .catch((error) => console.log(error));
@@ -137,4 +189,6 @@ const LatestTrailer = {
   },
 };
 
-LatestTrailer.start();
+latestTrailer.start();
+
+

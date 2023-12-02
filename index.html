@@ -30,8 +30,8 @@
             </div>
 
             <div class="d-flex align-items-center">
-              <a href="/login" class="nav-button">Đăng nhập</a>
-              <a href="/signup" class="nav-button">Tham gia TMDB</a>
+              <a href="/login" class="nav-button">Login</a>
+              <a href="/signup.html" class="nav-button">Join TMDB</a>
               <a type="button" class="nav-button search-button">
                 <i
                   class="fa-solid fa-magnifying-glass fa-lg"
@@ -55,16 +55,23 @@
               </a>
             </div>
 
-            <div class="col-2 d-flex align-items-center justify-content-end">
-              <a type="button" class="nav-button search-button">
-                <i class="fa-solid fa-user fa-lg" style="color: #ffffff"></i>
-              </a>
+            <div class="col-2 d-flex align-items-center justify-content-end" style="position: relative;">
+              <div class="action-button">
+                <a type="button"  class="nav-button search-button ">
+                  <i class="fa-solid fa-user fa-lg test" style="color: #ffffff"></i>
+                </a>
+                <div class="action-popup">
+                  <a href="/login.html" class="">Đăng Nhập</a>
+                  <a href="/signup.html" class="">Đăng Ký</a>
+                </div>
+              </div>
               <a type="button" class="nav-button search-button">
                 <i
                   class="fa-solid fa-magnifying-glass fa-lg"
                   style="color: rgb(1, 180, 228)"
                 ></i>
               </a>
+             
             </div>
           </div>
         </div>
@@ -83,7 +90,7 @@
           </ul>
         </div>
       </div>
-      <div class="container-lg no-padding">
+      <div class="container-lg no-padding" style="min-height: 100vh;">
         <!-- Home Search -->
         <div class="home-search">
           <div class="home-search-content p-lg-5 p-3">
@@ -107,27 +114,144 @@
         </div>
 
         <!-- Home Trending -->
-        <div class="home-trending page-section">
-          <div class="home-trending-bg"></div>
-          <div class="section-header">
-            <h2>Trending</h2>
+        <div class="page-section">
+          <div class="home-trending">
+            <div class="home-trending-bg"></div>
+            <div class="content">
+              <div class="section-header">
+                <h2>Trending</h2>
+              </div>
+              <div
+                class="trending-scroller d-flex flex-nowrap overflow-y-scroll"
+              ></div>
+
+            </div>
           </div>
-          <div
-            class="trending-scroller d-flex flex-nowrap overflow-y-scroll"
-          ></div>
         </div>
 
         <!-- Latest Trailer -->
-        <div class="latest-trailer page-section">
-          <div class="section-header">
-            <h2>Latest trailer</h2>
-          </div>
           <div
-            class="latest-trailer-scroller d-flex flex-nowrap overflow-y-scroll"
-          ></div>
+            class="latest-trailer backdrop-bg"
+            style="
+              background-position: center center;
+              background-size: cover;
+              background-repeat: no-repeat;
+              color: #fff;
+              transition: all 0.5s;
+              width: 100%;
+              overflow: hidden;
+              border-radius: 10px;
+            "
+          >
+            <div class="blur-bg">
+              <div class="content">
+                <div class="section-header">
+                  <h2>Latest trailer</h2>
+                </div>
+                <div
+                  class="latest-trailer-scroller d-flex flex-nowrap overflow-y-scroll"
+                ></div>
+                <div class="play-modal">
+                  <div class="play-box">
+                    <div class="play-close"><i class="fa-solid fa-x"></i></div>
+                    <iframe         
+                      title="YouTube video player"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen=""
+                    ></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        <!-- Join Now -->
+        <div class="page-section">
+          <div class="join-now backdrop-bg">
+            <div class="blur-bg">
+              <div class="content">
+                <div class="section-header">
+                  <h2>Join Today</h2>
+                </div>
+                <div class="w-100">
+                  <div class="d-flex w-100 flex-lg-row flex-column" style="gap: 20px;">
+                    <div class="left col-12 col-lg-6 g-0 d-flex flex-column align-content-lg-center">
+                      <p>Get access to maintain your own custom personal lists, track what you've seen and search and filter for what to watch next—regardless if it's in theatres, on TV or available on popular streaming services like .</p>
+                      <a href="/signup.html">
+                        <button type="button" class="btn join-btn">Sign up</button>
+                      </a>
+                    </div>
+                    <div class="right col-12 col-lg-6 g-0 align-content-lg-center justify-content-lg-center">
+                      <ul>
+                        <li>Enjoy TMDB ad free</li>
+                        <li>Maintain a personal watchlist</li>
+                        <li>Filter by your subscribed streaming services and find something to watch</li>
+                        <li>Log the movies and TV shows you've seen</li>
+                        <li>Build custom lists</li>
+                        <li>Contribute to and improve our database</li>
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
-      <div class="main-footer"></div>
+      <div class="main-footer">
+        <div class="container-lg no-padding">
+          <div class="nav d-flex flex-lg-row flex-column justify-content-lg-center" style="gap: 40px;">
+            <div class="d-flex flex-column" style="gap: 20px;">
+              <div class="footer-logo-container">
+                <img src="./assets/icons/footer_logo.svg" alt="footer logo">
+              </div>
+              <a href="/signup.html" class="footer-join-btn">
+                <button type="button" class="btn">JOIN THE COMMUNITY</button>
+              </a>
+            </div>
+            <div>
+              <h3>The Basics</h3>
+              <ul>
+                <li><a href="/about?language=vi">Giới thiệu về TMDB</a></li>
+                <li><a href="/about/staying-in-touch?language=vi">Contact Us</a></li>
+                <li><a href="/talk?language=vi">Support Forums</a></li>
+                  <li><a href="https://developer.themoviedb.org/docs" target="_blank">API</a></li>
+                <li><a href="https://status.themoviedb.org/" target="_blank" rel="noopener">System Status</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Get Involved</h3>
+              <ul>
+                <li><a href="/bible?language=vi"><span class="glyphicons glyphicons-asterisk"></span> Contribution Bible</a></li>
+                <li><a href="/movie/new?language=vi">Add New Movie</a></li>
+                <li><a href="/tv/new?language=vi">Add New TV Show</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Community</h3>
+              <ul>
+                <li><a href="/documentation/community/guidelines?language=vi">Guidelines</a></li>
+                <li><a href="/discuss?language=vi">Discussions</a></li>
+                <li><a href="/leaderboard?language=vi">Leaderboard</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Legal</h3>
+              <ul>
+                <li><a href="/terms-of-use?language=vi">Terms of Use</a></li>
+                <li><a href="/api-terms-of-use?language=vi">API Terms of Use</a></li>
+                <li><a href="/privacy-policy?language=vi">Privacy Policy</a></li>
+                <li><a href="/dmca-policy?language=vi">DMCA Policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
   <script src="./bootstrap-5.0.2-dist/js/bootstrap.js"></script>
