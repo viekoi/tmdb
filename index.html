@@ -15,23 +15,43 @@
     <title>TMDB</title>
   </head>
   <body>
+    <div class="toast-container" style="position: relative">
+      <div class="toast-body toast show" role="alert"></div>
+    </div>
     <div class="app">
       <div class="main-header">
         <!-- max view header -->
-        <div class="container d-lg-block d-none">
+        <div class="container d-lg-block d-none big-header">
           <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
               <a href="/" class="main-header-logo">
                 <img src="./assets/icons/header_logo.svg" alt="logo" />
               </a>
-              <a href="/movies" class="nav-button">Movies</a>
-              <a href="/tvs" class="nav-button">TV Shows </a>
-              <a href="/people" class="nav-button">People</a>
+              <a href="/movies.html" class="nav-button">Movies</a>
+              <a href="/tvs.html" class="nav-button">TV Shows </a>
+              <a href="/people.html" class="nav-button">People</a>
             </div>
 
-            <div class="d-flex align-items-center">
-              <a href="/login" class="nav-button">Login</a>
+            <div class="unauth d-none align-items-center">
+              <a href="/login.html" class="nav-button">Login</a>
               <a href="/signup.html" class="nav-button">Join TMDB</a>
+              <a type="button" class="nav-button search-button">
+                <i
+                  class="fa-solid fa-magnifying-glass fa-lg"
+                  style="color: rgb(1, 180, 228)"
+                ></i>
+              </a>
+            </div>
+
+            <div class="auth d-flex align-items-center">
+              <div class=" action-button">
+                <div class="nav-button name-container"></div>
+                <div class="action-popup">
+                  <a type="button" class="logout-btn">Log out</a>
+                 
+                </div>
+              </div>
+              
               <a type="button" class="nav-button search-button">
                 <i
                   class="fa-solid fa-magnifying-glass fa-lg"
@@ -42,7 +62,7 @@
           </div>
         </div>
         <!-- mobile header -->
-        <div class="container-fluid d-lg-none position-relative">
+        <div class="container-fluid d-lg-none position-relative mobile-header">
           <div class="d-flex align-items-center justify-content-between">
             <div class="col-2 align-items-center">
               <a type="button" class="nav-button search-button bars">
@@ -55,14 +75,33 @@
               </a>
             </div>
 
-            <div class="col-2 d-flex align-items-center justify-content-end" style="position: relative;">
+            <div class="unauth col-2 d-flex align-items-center justify-content-end" style="position: relative;">
               <div class="action-button">
                 <a type="button"  class="nav-button search-button ">
                   <i class="fa-solid fa-user fa-lg test" style="color: #ffffff"></i>
                 </a>
                 <div class="action-popup">
-                  <a href="/login.html" class="">Đăng Nhập</a>
-                  <a href="/signup.html" class="">Đăng Ký</a>
+                  <a href="/login.html" class="">Sign in</a>
+                  <a href="/signup.html" class="">Register</a>
+                </div>
+              </div>
+              <a type="button" class="nav-button search-button">
+                <i
+                  class="fa-solid fa-magnifying-glass fa-lg"
+                  style="color: rgb(1, 180, 228)"
+                ></i>
+              </a>
+             
+            </div>
+
+            <div class="auth col-2 d-none align-items-center justify-content-end" style="position: relative;">
+              <div class="action-button">
+                <a type="button"  class="nav-button search-button ">
+                  <i class="fa-solid fa-user fa-lg test" style="color: #ffffff"></i>
+                </a>
+                <div class="action-popup">
+                  <a type="button" class="logout-btn">Log out</a>
+                
                 </div>
               </div>
               <a type="button" class="nav-button search-button">
@@ -79,38 +118,41 @@
         <div class="mobile-nav-sidebar d-lg-none">
           <ul>
             <li>
-              <a href="/movies" class="nav-button">Movies</a>
+              <a href="/movies.html" class="nav-button">Movies</a>
             </li>
             <li>
-              <a href="/tvs" class="nav-button">TV Shows</a>
+              <a href="/tvs.html" class="nav-button">TV Shows</a>
             </li>
             <li>
-              <a href="/people" class="nav-button">People</a>
+              <a href="/people.html" class="nav-button">People</a>
             </li>
           </ul>
         </div>
       </div>
       <div class="container-lg no-padding" style="min-height: 100vh;">
         <!-- Home Search -->
-        <div class="home-search">
-          <div class="home-search-content p-lg-5 p-3">
-            <div class="title">
-              <h2>Welcome.</h2>
-              <h3>
-                Millions of movies, TV shows and people to discover. Explore
-                now.
-              </h3>
-            </div>
-            <div class="search">
-              <form action="">
-                <div class="input-wrapper">
-                  <input type="text" placeholder="Search..." />
-
-                  <button>Search</button>
-                </div>
-              </form>
+        <div class="page-section">
+          <div class="home-search">
+            <div class="home-search-content p-lg-5 p-3">
+              <div class="title">
+                <h2>Welcome.</h2>
+                <h3>
+                  Millions of movies, TV shows and people to discover. Explore
+                  now.
+                </h3>
+              </div>
+              <div class="search">
+                <form id="home-search_form"   class="home-search_form">
+                  <div class="input-wrapper">
+                    <input type="text" id="searchTerm" name="title" value="" placeholder="Search..." />
+  
+                    <button type="submit">Search</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
+
         </div>
 
         <!-- Home Trending -->
@@ -130,6 +172,7 @@
         </div>
 
         <!-- Latest Trailer -->
+        <div class="page-section">
           <div
             class="latest-trailer backdrop-bg"
             style="
@@ -165,6 +208,8 @@
               </div>
             </div>
           </div>
+
+        </div>
 
 
         <!-- Join Now -->
@@ -217,7 +262,7 @@
             <div>
               <h3>The Basics</h3>
               <ul>
-                <li><a href="/about?language=vi">Giới thiệu về TMDB</a></li>
+                <li><a href="/about?language=vi">About về TMDB</a></li>
                 <li><a href="/about/staying-in-touch?language=vi">Contact Us</a></li>
                 <li><a href="/talk?language=vi">Support Forums</a></li>
                   <li><a href="https://developer.themoviedb.org/docs" target="_blank">API</a></li>
@@ -255,5 +300,6 @@
     </div>
   </body>
   <script src="./bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+  <script src="./scripts/app.js"></script>
   <script src="./scripts/home.js"></script>
 </html>

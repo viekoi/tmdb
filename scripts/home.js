@@ -1,48 +1,3 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
-
-const bars = $(".bars");
-const mobileSideBar = $(".mobile-nav-sidebar");
-
-const header = {
-  isMobileSideBarOpen: false,
-  handleEvents: function () {
-    window.addEventListener("resize", () => {
-      if (window.innerWidth >= 992) {
-        this.isMobileSideBarOpen = false;
-        mobileSideBar.classList.remove("slide-out-left");
-        mobileSideBar.classList.remove("slide-in-left");
-      }
-    });
-
-    bars.addEventListener("click", () => {
-      if (
-        ![...mobileSideBar.classList].includes(`slide-in-left`) &&
-        ![...mobileSideBar.classList].includes(`slide-out-left`) &&
-        !this.isMobileSideBarOpen
-      ) {
-        mobileSideBar.classList.add("slide-in-left");
-      } else if (
-        [...mobileSideBar.classList].includes(`slide-out-left`) &&
-        !this.isMobileSideBarOpen
-      ) {
-        mobileSideBar.classList.remove("slide-out-left");
-        mobileSideBar.classList.add("slide-in-left");
-      } else {
-        mobileSideBar.classList.remove("slide-in-left");
-        mobileSideBar.classList.add("slide-out-left");
-      }
-      this.isMobileSideBarOpen = !this.isMobileSideBarOpen;
-    });
-  },
-
-  start: function () {
-    this.handleEvents();
-  },
-};
-
-header.start();
-
 const trendingScroller = $(".trending-scroller");
 
 const trending = {
@@ -128,20 +83,12 @@ const latestTrailer = {
           latestTrailerScroller.insertAdjacentHTML(`beforeend`, markup);
         });
 
-        const trailerCards = [
-          ...$$(
-            ".latest-trailer-scroller .trailer-card"
-          ),
-        ];
+        const trailerCards = [...$$(".latest-trailer-scroller .trailer-card")];
         trailerCards.forEach((card) => {
           const currentIndex = Number(card.dataset.index);
-          const playModal = $(
-            ".latest-trailer .play-modal"
-          );
+          const playModal = $(".latest-trailer .play-modal");
           const playBox = $(".latest-trailer .play-box");
-          const playModalIframe = $(
-            ".latest-trailer .play-box iframe"
-          );
+          const playModalIframe = $(".latest-trailer .play-box iframe");
           const closeButton = $(".play-close");
           card.addEventListener("mouseenter", () => {
             backDropBg.style.backgroundImage = `url("${data[currentIndex].backDropImageUrl}")`;
@@ -191,4 +138,28 @@ const latestTrailer = {
 
 latestTrailer.start();
 
+const homeSearchForm = {
+  handleEvents() {
+    const formElement = $(".home-search .home-search_form");
+    formElement.addEventListener("submit", (event) => {
+      event.preventDefault();
 
+      const formData = new FormData(formElement);
+
+      const title = formData.get("title");
+      const searchParams = new URLSearchParams();
+
+      searchParams.set("title", title);
+      searchParams.set("model", "movie");
+
+      const searchUrl = `search.html?${searchParams.toString()}`;
+
+      window.location.href = searchUrl;
+    });
+  },
+  start() {
+    this.handleEvents();
+  },
+};
+
+homeSearchForm.start();

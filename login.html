@@ -12,7 +12,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>TMDB - Sign up</title>
+    <title>TMDB - Login</title>
   </head>
   <body>
     <div class="toast-container" style="position: relative">
@@ -44,13 +44,14 @@
             </div>
 
             <div class="auth d-flex align-items-center">
-              <div class="action-button">
+              <div class=" action-button">
                 <div class="nav-button name-container"></div>
                 <div class="action-popup">
                   <a type="button" class="logout-btn">Log out</a>
+                 
                 </div>
               </div>
-
+              
               <a type="button" class="nav-button search-button">
                 <i
                   class="fa-solid fa-magnifying-glass fa-lg"
@@ -74,16 +75,10 @@
               </a>
             </div>
 
-            <div
-              class="unauth col-2 d-flex align-items-center justify-content-end"
-              style="position: relative"
-            >
+            <div class="unauth col-2 d-flex align-items-center justify-content-end" style="position: relative;">
               <div class="action-button">
-                <a type="button" class="nav-button search-button">
-                  <i
-                    class="fa-solid fa-user fa-lg test"
-                    style="color: #ffffff"
-                  ></i>
+                <a type="button"  class="nav-button search-button ">
+                  <i class="fa-solid fa-user fa-lg test" style="color: #ffffff"></i>
                 </a>
                 <div class="action-popup">
                   <a href="/login.html" class="">Sign in</a>
@@ -96,21 +91,17 @@
                   style="color: rgb(1, 180, 228)"
                 ></i>
               </a>
+             
             </div>
 
-            <div
-              class="auth col-2 d-none align-items-center justify-content-end"
-              style="position: relative"
-            >
+            <div class="auth col-2 d-none align-items-center justify-content-end" style="position: relative;">
               <div class="action-button">
-                <a type="button" class="nav-button search-button">
-                  <i
-                    class="fa-solid fa-user fa-lg test"
-                    style="color: #ffffff"
-                  ></i>
+                <a type="button"  class="nav-button search-button ">
+                  <i class="fa-solid fa-user fa-lg test" style="color: #ffffff"></i>
                 </a>
                 <div class="action-popup">
                   <a type="button" class="logout-btn">Log out</a>
+                
                 </div>
               </div>
               <a type="button" class="nav-button search-button">
@@ -119,6 +110,7 @@
                   style="color: rgb(1, 180, 228)"
                 ></i>
               </a>
+             
             </div>
           </div>
         </div>
@@ -138,19 +130,21 @@
         </div>
       </div>
       <div class="container-lg no-padding" style="min-height: 100vh">
-        <section class="signup">
+        <section class="signin">
           <div class="content">
             <div class="section-header">
-              <h2>Sign up for an account</h2>
+              <h2>Login to your account</h2>
               <p>
-                Signing up for an account is free and easy. Fill out the form
-                below to get started. JavaScript is required to to continue.
+                In order to use the editing and rating capabilities of TMDB, as
+                well as get personal recommendations you will need to login to
+                your account. If you do not have an account, registering for an
+                account is free and simple. <a href="/signup.html" style="color:rgba(1, 180, 228,1);">Click here</a> to get started.
               </p>
             </div>
             <form
-              id="signup_form"
-              class="k-form signup_form"
-              name="account_signup"
+              id="signin_form"
+              class="k-form signin_form"
+              name="account_signin"
             >
               <fieldset>
                 <label class="" for="username">
@@ -177,25 +171,9 @@
                   />
                 </label>
 
-                <label class="" for="password_confirm">
-                  Password Confirm
-                  <input
-                    id="password_confirm"
-                    class="k-textbox password_confirm_field"
-                    type="password"
-                    name="password_confirm"
-                    value=""
-                  />
-                </label>
               </fieldset>
-
-              <p>
-                By clicking the "Sign up" button below, I certify that I have
-                read and agree to the TMDB terms of use and privacy policy.
-              </p>
-
               <div class="flex">
-                <button type="submit" class="btn signup-btn">Sign up</button>
+                <button type="submit" class="btn signin-btn">Sign in</button>
               </div>
             </form>
           </div>
@@ -286,5 +264,5 @@
   </body>
   <script src="./bootstrap-5.0.2-dist/js/bootstrap.js"></script>
   <script src="./scripts/app.js"></script>
-  <script src="./scripts/signup.js"></script>
+  <script src="./scripts/login.js"></script>
 </html>

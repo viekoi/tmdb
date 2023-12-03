@@ -4,8 +4,7 @@ const signupForm = {
     if (isAuthed) {
       return (window.location.href = "/");
     }
-    const formElement = $(".signup_form");
-    console.log(formElement);
+    const formElement = $(".signin_form");
     formElement.addEventListener("submit", (event) => {
       event.preventDefault();
       if (this.validateForm()) {
@@ -15,7 +14,8 @@ const signupForm = {
           userName: formData.get("userName"),
         };
 
-        fetch("https://tmdb-backend-phi.vercel.app/api/register", {
+
+        fetch("https://tmdb-backend-phi.vercel.app/api/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -26,9 +26,11 @@ const signupForm = {
           .then(async (response) => {
             const res = await response.json();
             if (response.ok) {
-              this.showSuccessToast("Signup successful!");
+              console.log(res);
+              this.showSuccessToast("Login successful!");
+              userContext.setCookie("token", res.token, 7);
+              window.location.href = "/";
             } else {
-              
               this.showErrorToast(res);
             }
           })
@@ -40,10 +42,9 @@ const signupForm = {
     });
   },
   validateForm() {
-    const usernameInput = $(".signup_form .username_field");
+    const usernameInput = $(".signin_form .username_field");
     console.log(usernameInput);
-    const passwordInput = $(".signup_form .password_field");
-    const confirmPasswordInput = $(".signup_form .password_confirm_field");
+    const passwordInput = $(".signin_form .password_field");
 
     this.resetValidationStyles();
 
@@ -61,15 +62,10 @@ const signupForm = {
         "Password should be at least 4 characters long."
       );
     }
-
-    if (confirmPasswordInput.value !== passwordInput.value) {
-      isValid = false;
-      this.showError(confirmPasswordInput, "Passwords do not match.");
-    }
     return isValid;
   },
   resetValidationStyles() {
-    const inputs = $$(".signup_form input");
+    const inputs = $$(".signin_form input");
     inputs.forEach((input) => {
       input.classList.remove("error");
       const errorMessage = input.parentNode.querySelector(".error-message");
@@ -90,12 +86,12 @@ const signupForm = {
     this.showToast(message, "bg-success");
   },
   showErrorToast(message) {
-    const toastMessage = `Error: ${message}`
+    const toastMessage = `Error: ${message}`;
     this.showToast(toastMessage, "bg-danger");
   },
   showToast(message, toastClass) {
     const toastBody = $(".toast-body");
-    toastBody.classList.add(toastClass,"toast-in-out");
+    toastBody.classList.add(toastClass, "toast-in-out");
     toastBody.innerHTML = `${message}`;
     setTimeout(() => {
       toastBody.classList.remove("toast-in-out");

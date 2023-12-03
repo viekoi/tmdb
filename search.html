@@ -12,7 +12,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>TMDB - Sign up</title>
+    <title>TMDB</title>
   </head>
   <body>
     <div class="toast-container" style="position: relative">
@@ -138,70 +138,28 @@
         </div>
       </div>
       <div class="container-lg no-padding" style="min-height: 100vh">
-        <section class="signup">
-          <div class="content">
-            <div class="section-header">
-              <h2>Sign up for an account</h2>
-              <p>
-                Signing up for an account is free and easy. Fill out the form
-                below to get started. JavaScript is required to to continue.
-              </p>
-            </div>
-            <form
-              id="signup_form"
-              class="k-form signup_form"
-              name="account_signup"
-            >
-              <fieldset>
-                <label class="" for="username">
-                  <span>Username</span>
-                  <input
-                    id="usermame"
-                    class="k-textbox username_field"
-                    type="text"
-                    name="userName"
-                    autocapitalize="off"
-                    value=""
-                  />
-                </label>
+        <div class="search-page content">
+          <div class="d-flex flex-column flex-lg-row" style="gap: 40px">
+            <div class="col-lg-3 col-12 g-0">
+              <div class="search-page-filter">
+                <h3 class="">Search Results</h3>
 
-                <label class="" for="password">
-                  <span>Password (4 characters minimum)</span>
-                  <input
-                    id="password"
-                    class="k-textbox password_field"
-                    type="password"
-                    name="password"
-                    value=""
-                    aria-autocomplete="list"
-                  />
-                </label>
-
-                <label class="" for="password_confirm">
-                  Password Confirm
-                  <input
-                    id="password_confirm"
-                    class="k-textbox password_confirm_field"
-                    type="password"
-                    name="password_confirm"
-                    value=""
-                  />
-                </label>
-              </fieldset>
-
-              <p>
-                By clicking the "Sign up" button below, I certify that I have
-                read and agree to the TMDB terms of use and privacy policy.
-              </p>
-
-              <div class="flex">
-                <button type="submit" class="btn signup-btn">Sign up</button>
+                <ul class="filter-option-list">
+                  <!-- <li class="filter-option active">
+                    <div class="search_tab active">TV Shows</div>
+                    <span>157</span>
+                  </li>
+                  <li class="filter-option">
+                    <div class="search_tab">TV Shows</div>
+                    <span>157</span>
+                  </li> -->
+                </ul>
               </div>
-            </form>
+            </div>
+            <div class="col-lg-9 col-12 g-0">abc</div>
           </div>
-        </section>
+        </div>
       </div>
-
       <div class="main-footer">
         <div class="container-lg no-padding">
           <div
@@ -219,7 +177,7 @@
             <div>
               <h3>The Basics</h3>
               <ul>
-                <li><a href="/about?language=vi">About TMDB</a></li>
+                <li><a href="/about?language=vi">About về TMDB</a></li>
                 <li>
                   <a href="/about/staying-in-touch?language=vi">Contact Us</a>
                 </li>
@@ -286,5 +244,5 @@
   </body>
   <script src="./bootstrap-5.0.2-dist/js/bootstrap.js"></script>
   <script src="./scripts/app.js"></script>
-  <script src="./scripts/signup.js"></script>
+  <script src="./scripts/search.js"></script>
 </html>

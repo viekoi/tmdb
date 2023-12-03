@@ -82,7 +82,7 @@ a:hover {
   font-size: 21px;
 }
 .page-section {
-  margin: 50px 0;
+  margin: 0 0 50px 0;
 }
 
 /* HEADER */
@@ -136,6 +136,11 @@ a:hover {
   display: flex;
   align-items: center;
   padding: 0;
+}
+
+
+.action-button{
+  position: relative;
 }
 
 .action-button:hover .action-popup {
@@ -623,7 +628,7 @@ a:hover {
   font-weight: 400;
 }
 
-.signup .content {
+.signup .content, .signin .content {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -636,13 +641,13 @@ a:hover {
   gap: 20px;
 }
 
-.signup fieldset {
+.signup fieldset, .signin fieldset {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.signup label {
+.signup label, .signin label {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -674,7 +679,7 @@ a:hover {
   background-color: #fff;
 }
 
-.signup-btn {
+.signup-btn, .signin-btn {
   background-color: rgb(var(--tmdbLightBlue));
   color: #fff;
   font-weight: 700;
@@ -727,3 +732,59 @@ a:hover {
     opacity: 1;
   }
 }
+
+.search-page{
+  margin: 50px 0;
+}
+
+.search-page-filter{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.search-page-filter h3{
+  background-color: rgba(var(--tmdbLightBlue), 1);
+  color: #fff;
+  font-size: 19px ;
+  padding: 20px;
+  font-weight: 600; 
+}
+
+.filter-option{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.filter-option span{
+  padding: 2px 10px; 
+  background-color: #ccc;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.filter-option:hover{
+  background-color: #ccc;
+}
+
+.filter-option:hover span{
+  background-color: #fff;
+}
+
+.filter-option.active span{
+  padding: 2px 10px; 
+  background-color: #fff;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.filter-option.active{
+  background-color: #ccc;
+  font-weight: 700;
+}
+
