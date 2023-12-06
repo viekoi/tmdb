@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./bootstrap-5.0.2-dist/css/bootstrap.css" />
     <link rel="stylesheet" href="./styles//global.css" />
     <link
@@ -12,13 +12,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>TMDB</title>
-  </head>
-  <body>
-    <div class="app">
-      <div class="main-header">
+    <title>TMDB Person</title>
+<body>
+    <div class="app"><div class="main-header">
         <!-- max view header -->
-        <div class="container d-lg-block d-none">
+        <div class="container d-lg-block d-none" style="max-width: 100%; padding: 0px 60px;">
           <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
               <a href="/" class="main-header-logo">
@@ -26,7 +24,7 @@
               </a>
               <a href="/movies" class="nav-button">Movies</a>
               <a href="/tvs" class="nav-button">TV Shows </a>
-              <a href="./people.html" class="nav-button">People</a>
+              <a href="/people" class="nav-button">People</a>
             </div>
 
             <div class="d-flex align-items-center">
@@ -83,82 +81,55 @@
           </ul>
         </div>
       </div>
-      <div class="container-lg no-padding">
-        <!-- Home Search -->
-        <div class="home-search">
-          <div class="home-search-content p-lg-5 p-3">
-            <div class="title">
-              <h2>Welcome.</h2>
-              <h3>
-                Millions of movies, TV shows and people to discover. Explore
-                now.
-              </h3>
-            </div>
-            <div class="search">
-              <form action="">
-                <div class="input-wrapper">
-                  <input type="text" placeholder="Search..." />
-
-                  <button>Search</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <!-- Home Trending -->
-        <div class="home-trending page-section">
-          <div class="home-trending-bg"></div>
-          <div class="section-header">
-            <h2>Trending</h2>
-          </div>
-          <div
-            class="trending-scroller d-flex flex-nowrap overflow-y-scroll"
-          ></div>
-        </div>
-
-        <!-- Latest Trailer -->
-        <div class="latest-trailer page-section">
-          <div class="section-header">
-            <h2>Latest trailer</h2>
-          </div>
-          <div
-            class="latest-trailer-scroller d-flex flex-nowrap overflow-y-scroll"
-          ></div>
-        </div>
-      </div>
-      <div class="page-section">
-        <div class="join-now backdrop-bg">
-          <div class="blur-bg">
-            <div class="content">
-              <div class="section-header">
-                <h2>Join Today</h2>
+    <div class="container_fluid" style="height: fit-content;">
+        <div class="personal_info minor_info">
+            <div class="col_1">
+              <div class="person_img_wrapper">
+                <img id="person_img" alt="person_img">
               </div>
-              <div class="w-100">
-                <div class="d-flex w-100 flex-lg-row flex-column" style="gap: 20px;">
-                  <div class="left col-12 col-lg-6 g-0 d-flex flex-column align-content-lg-center">
-                    <p>Get access to maintain your own custom personal lists, track what you've seen and search and filter for what to watch next—regardless if it's in theatres, on TV or available on popular streaming services like .</p>
-                    <a href="/signup.html">
-                      <button type="button" class="btn join-btn">Sign up</button>
-                    </a>
+              <div class="icon_list">
+                  <a class="icon"></a>
+                  <a class="icon"></a>
+                  <a class="icon"></a>
+              </div>
+              <div class="info">
+                <h3>Personal Info</h3>
+                <div class="details">
+                  <div>
+                    <strong>Known for</strong>
+                    <span id="knownFor"></span>
                   </div>
-                  <div class="right col-12 col-lg-6 g-0 align-content-lg-center justify-content-lg-center">
-                    <ul>
-                      <li>Enjoy TMDB ad free</li>
-                      <li>Maintain a personal watchlist</li>
-                      <li>Filter by your subscribed streaming services and find something to watch</li>
-                      <li>Log the movies and TV shows you've seen</li>
-                      <li>Build custom lists</li>
-                      <li>Contribute to and improve our database</li>
-                    </ul>
+                  <div>
+                    <strong>Gender</strong>
+                    <span id="gender"></span>
                   </div>
-                </div>
+                  <div>
+                    <strong>Birthday</strong>
+                    <span id="dob"></span>
+                  </div>
+                  <div>
+                    <strong>Place of Birth</strong>
+                    <span id="pob"></span>
+                  </div>
                 </div>
               </div>
             </div>
+        </div>
+        <div class="personal_info main_info">
+          <div class="col_2">
+            <h2 id="fullName"></h2>
+            <div class="biography">
+              <h3>Biography</h3>
+              <div id="biography"></div>
+              <span class="read_more">Read More ></span>
+            </div>
+          <div class="known-for">
+            <h3>Known for</h3>
+            <ul class="movies_container">
+            </ul>
+          </div>
           </div>
         </div>
-      </div>
     </div>
     <div class="main-footer">
       <div class="container-lg no-padding">
@@ -209,9 +180,7 @@
         </div>
       </div>
     </div>
-  </div>
-    </div>
-  </body>
-  <script src="./bootstrap-5.0.2-dist/js/bootstrap.js"></script>
-  <script src="./scripts/home.js"></script>
+</body>
+<script src="./bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+<script src="./scripts/person.js"></script>
 </html>
