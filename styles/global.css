@@ -61,6 +61,18 @@ ol {
   padding-left: 0;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+}
+
 /* Remove default hyperlink styles */
 a {
   text-decoration: none;
@@ -138,8 +150,7 @@ a:hover {
   padding: 0;
 }
 
-
-.action-button{
+.action-button {
   position: relative;
 }
 
@@ -256,7 +267,7 @@ a:hover {
 .home-search-content {
   flex: 1;
 }
-.title {
+.home-search .title {
   margin-bottom: 20px;
   width: 100%;
 }
@@ -628,7 +639,8 @@ a:hover {
   font-weight: 400;
 }
 
-.signup .content, .signin .content {
+.signup .content,
+.signin .content {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -641,13 +653,15 @@ a:hover {
   gap: 20px;
 }
 
-.signup fieldset, .signin fieldset {
+.signup fieldset,
+.signin fieldset {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.signup label, .signin label {
+.signup label,
+.signin label {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -679,7 +693,8 @@ a:hover {
   background-color: #fff;
 }
 
-.signup-btn, .signin-btn {
+.signup-btn,
+.signin-btn {
   background-color: rgb(var(--tmdbLightBlue));
   color: #fff;
   font-weight: 700;
@@ -733,25 +748,25 @@ a:hover {
   }
 }
 
-.search-page{
+.search-page {
   margin: 50px 0;
 }
 
-.search-page-filter{
+.search-page-filter {
   border: 1px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
 }
 
-.search-page-filter h3{
+.search-page-filter h3 {
   background-color: rgba(var(--tmdbLightBlue), 1);
   color: #fff;
-  font-size: 19px ;
+  font-size: 19px;
   padding: 20px;
-  font-weight: 600; 
+  font-weight: 600;
 }
 
-.filter-option{
+.filter-option {
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
@@ -759,32 +774,405 @@ a:hover {
   cursor: pointer;
 }
 
-.filter-option span{
-  padding: 2px 10px; 
+.filter-option span {
+  padding: 2px 10px;
   background-color: #ccc;
   border-radius: 10px;
   font-weight: 400;
   font-size: 12px;
 }
 
-.filter-option:hover{
+.filter-option:hover {
   background-color: #ccc;
 }
 
-.filter-option:hover span{
+.filter-option:hover span {
   background-color: #fff;
 }
 
-.filter-option.active span{
-  padding: 2px 10px; 
+.filter-option.active span {
+  padding: 2px 10px;
   background-color: #fff;
   border-radius: 10px;
   font-weight: 400;
   font-size: 12px;
 }
 
-.filter-option.active{
+.filter-option.active {
   background-color: #ccc;
   font-weight: 700;
 }
 
+.search-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search-results-option {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.search-results-option .poster {
+  flex-shrink: 0;
+  width: 10%;
+}
+
+.search-results-option .poster a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.search-results-option .poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.search-results-option .details {
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.search-results-option .details h2 {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.details .title {
+  width: 100%;
+}
+
+.search-results-option .details .title .release_date {
+  color: #999;
+}
+
+.details .overview {
+  font-size: 16px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+}
+
+@media (max-width: 1400px) {
+  .search-results-option .poster {
+    flex-shrink: 0;
+    width: 15%;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-results-option .poster {
+    flex-shrink: 0;
+    width: 20%;
+  }
+}
+
+@media (max-width: 576px) {
+  .details .overview {
+    -webkit-line-clamp: 2;
+  }
+  .search-results-option .poster {
+    flex-shrink: 0;
+    width: 25%;
+  }
+}
+
+@media (max-width: 300px) {
+  .details .overview {
+    display: none;
+  }
+}
+
+
+
+/* PEOPLE PAGE */
+/*People List*/
+.people-page .content_wrapper {
+  padding: 50px 40px;
+}
+.people-page .title {
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+.people-page .people_container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.people-page .people_card {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  border: 1px solid #ced4da; 
+  align-items: flex-start; 
+}
+
+.people-page .people_card img {
+  width: 100%;
+  position: relative;
+  border-radius: 4px;
+}
+
+.people-page .people_card h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-block-end: 0;
+}
+
+.people-page .people_detail {
+  box-sizing: border-box;
+  padding: 20px 15px 20px 10px;
+}
+
+.people-page .people_detail > span {
+  font-size: 0.95em;
+  color: gray;
+}
+
+.people-page .row {
+  min-width: 300px;
+}
+
+/*Person Details*/
+.person-page img {
+  border-radius: var(--imageBorderRadius);
+}
+
+.person-page .container_fluid {
+  max-width: var(--maxPrimaryPageWidth);
+  padding: 60px 5vw;
+ 
+}
+
+.person-page .personal_info {
+  display: inline-block;
+  flex-direction: column;
+}
+
+.person-page .minor_info {
+  width: 25%;
+}
+
+.person-page .col_1 {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 250px;
+}
+
+
+.person-page .col_1 img {
+  width: 95%;
+}
+
+.person-page .icon_list {
+  display: flex;
+  gap: 10px;
+  padding: 20px 0;
+  box-sizing: border-box;
+  width: fit-content;
+}
+
+.person-page .icon {
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+}
+
+.person-page .icon:nth-child(1) {
+  background-image: url(https://www.themoviedb.org/assets/2/v4/glyphicons/social/facebook-2c5718e4ece8eb3a3cc49ae97000e541c0aad50869b419b5aa579693bc0ad059.svg);
+}
+
+.person-page .icon:nth-child(2) {
+  background-image: url(https://www.themoviedb.org/assets/2/v4/glyphicons/social/instagram-74e6299c864adc384258da3b3a8eb09282b7ccda4dd1dfa9a4158ba2ea8583b9.svg);
+}
+
+.person-page .icon:nth-child(3) {
+  background-image: url(https://www.themoviedb.org/assets/2/v4/glyphicons/social/twitter-a6ff8c172b8e086f4a64578cee0a16676c1a067b47a1b1b186d58795d241a852.svg);
+}
+
+.person-page .info {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.person-page strong {
+  display: block;
+}
+
+.person-page h2 {
+  font-weight: bolder;
+}
+
+.person-page .personal_info h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.person-page .main_info {
+  position: relative;
+  top: -150px; 
+  left: 60px;
+  width: 72%;
+}
+
+.person-page .col_2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px 0;
+  flex-grow: 3;
+  flex-wrap: nowrap;
+}
+
+.person-page .biography, #biography {
+  position: relative;
+}
+
+.person-page #biography::after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  height: 43px;
+  background-image: linear-gradient(to right,rgba(255,255,255,0)0,#fff 85%);
+}
+
+.person-page .no_after::after {
+  display: none;
+}
+
+.person-page .read_more {
+  position: absolute;
+  right: 20px;
+  bottom: 17px;
+  cursor: pointer;
+  color: rgb(var(--tmdbLightBlue));
+  font-weight: bold;
+}
+
+.person-page .known-for {
+  width: 100%;
+}
+
+.person-page .movies_container {
+  overflow-x: scroll;
+  white-space: nowrap;
+  padding-bottom: 10px;
+  margin-top: 20px;
+}
+
+
+.person-page .movie_card {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  width: 130px;
+  height: fit-content;
+  margin-right: 20px;
+}
+
+.person-page .movie_img {
+  height: 200px;
+}
+
+.person-page .movie_title {
+  padding-top: 5px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-size: 0.95em;
+  font-weight: 600;
+  width: 100%;
+  overflow-x: none;
+  white-space: wrap;
+}
+
+.person-page .details {
+  display: flex; flex-direction: column; gap: 20px
+}
+
+::-webkit-scrollbar {
+  height: 8px;
+}
+
+@media screen and (max-width: 992px) {
+  
+
+  .person-page .main_info {
+    position: static;
+    top: auto;
+    left: auto;
+  }
+
+  .person-page .personal_info {
+    display: flex;
+    width: 100%;
+  }
+
+  .person-page .col_1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    min-width: 250px;
+  }
+
+  .person-page .person_img_wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .person-page .col_1 img {
+    width: 65%;
+  }
+
+  .person-page .details {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .person-page .details > div {
+    width: 45%;
+  }
+
+  .person-page .col_2 {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+    margin-left: 0px;
+    flex-grow: 3;
+    flex-wrap: nowrap;
+  }
+
+  .person-page .icon_list {
+    margin-top: 40px;
+  }
+
+  .person-page #fullName {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 390px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}

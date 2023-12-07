@@ -137,24 +137,58 @@
           </ul>
         </div>
       </div>
-      <div class="container-lg no-padding" style="min-height: 100vh">
-        <div class="search-page content">
-          <div class="d-flex flex-column flex-lg-row" style="gap: 40px">
-            <div class="col-lg-3 col-12 g-0" style="flex-shrink: unset;">
-              <div class="search-page-filter">
-                <h3 class="">Search Results</h3>
-                <ul class="filter-option-list" style="height: fit-content;"></ul>
+      <!-- CONTENT -->
+      <div class="person-page container-lg no-padding" style="min-height: 100vh; padding: 30px 40px;">
+          <div class="personal_info minor_info">
+            <div class="col_1">
+              <div class="person_img_wrapper">
+                <img id="person_img" alt="person_img" />
               </div>
-            </div>
-            <div class="col-lg-9 col-12 g-0"  style="flex-shrink: unset;">
-              <div class="search-results">
-                <div class="search-results-list">
+              <div class="icon_list">
+                <a class="icon"></a>
+                <a class="icon"></a>
+                <a class="icon"></a>
+              </div>
+              <div class="info">
+                <h3>Personal Info</h3>
+                <div class="details">
+                  <div>
+                    <strong>Known for</strong>
+                    <span id="knownFor"></span>
+                  </div>
+                  <div>
+                    <strong>Gender</strong>
+                    <span id="gender"></span>
+                  </div>
+                  <div>
+                    <strong>Birthday</strong>
+                    <span id="dob"></span>
+                  </div>
+                  <div>
+                    <strong>Place of Birth</strong>
+                    <span id="pob"></span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+          <div class="personal_info main_info">
+            <div class="col_2">
+              <h2 id="fullName"></h2>
+              <div class="biography">
+                <h3>Biography</h3>
+                <div id="biography"></div>
+                <span class="read_more">Read More ></span>
+              </div>
+              <div class="known-for">
+                <h3>Known for</h3>
+                <ul class="movies_container"></ul>
+              </div>
+            </div>
+          </div>
+   
       </div>
+      <!-- FOOTER -->
       <div class="main-footer">
         <div class="container-lg no-padding">
           <div
@@ -239,5 +273,5 @@
   </body>
   <script src="./bootstrap-5.0.2-dist/js/bootstrap.js"></script>
   <script src="./scripts/app.js"></script>
-  <script src="./scripts/search.js"></script>
+  <script src="./scripts/person.js"></script>
 </html>

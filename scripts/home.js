@@ -150,7 +150,7 @@ const homeSearchForm = {
       const searchParams = new URLSearchParams();
 
       searchParams.set("title", title);
-      searchParams.set("model", "movie");
+      searchParams.set("model", "movies");
 
       const searchUrl = `search.html?${searchParams.toString()}`;
 
