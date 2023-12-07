@@ -593,6 +593,10 @@ a:hover {
   color: white;
 }
 
+.main-footer h3{
+  margin-bottom: 10px;
+}
+
 .main-footer .nav {
   display: flex;
   padding: 80px 30px;
