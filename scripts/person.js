@@ -2,6 +2,7 @@ const personPage = {
   hanldeEvents() {
     const urlParams = new URLSearchParams(window.location.search);
     const personId = urlParams.get("id");
+    console.log(personId)
     fetch(`https://tmdb-backend-phi.vercel.app/api/people/${personId}`, {
       method: "GET",
     })

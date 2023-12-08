@@ -12,13 +12,20 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      rel="stylesheet"
+      href="./fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
     <title>TMDB</title>
   </head>
+
   <body>
-    <div class="toast-container" style="position: relative">
-      <div class="toast-body toast show" role="alert"></div>
-    </div>
-    <div id="Search-page" class="app" style="max-height: 100vh">
+    <section class="app">
+      <!-- Header -->
       <div class="main-header">
         <!-- max view header -->
         <div class="container d-lg-block d-none big-header">
@@ -137,30 +144,33 @@
           </ul>
         </div>
       </div>
-      <div class="container-lg no-padding" style="min-height: 100vh">
-        <div class="search-page content">
-          <div class="d-flex flex-column flex-lg-row" style="gap: 40px">
-            <div class="col-lg-3 col-12 g-0" style="flex-shrink: unset">
-              <div class="search-page-filter">
-                <h3 class="">Search Results</h3>
-                <ul class="filter-option-list" style="height: fit-content"></ul>
-              </div>
+      <!-- End Header -->
+
+      <!-- Content -->
+      <div class="media-detail">
+        <div class="introduction-media">
+          <div
+            class="poster-info container-lg w-100 d-flex flex-lg-row"
+            style="gap: 10px"
+          >
+            <!-- //////////////// movies info //////////////////////// -->
+          </div>
+        </div>
+        <div class="main-content container-lg mx-auto w-100 d-flex flex-column flex-lg-row" style="margin-top: 30px;">
+          <div class="white-column pe-5 w-100">
+            <div class="casts">
+              <!-- actor -->
             </div>
-            <div class="col-lg-9 col-12 g-0" style="flex-shrink: unset">
-              <div class="search-results">
-                <div class="search-results-list"></div>
-                <div class="load_more" style="padding: 0; margin-top: 10px">
-                  <button
-                    class="d-flex justify-content-center align-items-center"
-                  >
-                    Load More
-                  </button>
-                </div>
-              </div>
+          </div>
+          <div class="grey-column">
+            <div class="more-info d-flex flex-column mt-1">
+              <!-- more-info-->
             </div>
           </div>
         </div>
       </div>
+      <!-- End Content -->
+
       <div class="main-footer">
         <div class="container-lg no-padding">
           <div
@@ -178,7 +188,7 @@
             <div>
               <h3>The Basics</h3>
               <ul>
-                <li><a href="/about?language=vi">About về TMDB</a></li>
+                <li><a href="/about?language=vi">About TMDB</a></li>
                 <li>
                   <a href="/about/staying-in-touch?language=vi">Contact Us</a>
                 </li>
@@ -241,9 +251,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </body>
   <script src="./bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="./scripts/app.js"></script>
-  <script src="./scripts/search.js"></script>
+  <script src="./scripts/movieDetail.js"></script>
 </html>

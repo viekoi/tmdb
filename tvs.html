@@ -12,13 +12,19 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      rel="stylesheet"
+      href="./fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
     <title>TMDB</title>
   </head>
+
   <body>
-    <div class="toast-container" style="position: relative">
-      <div class="toast-body toast show" role="alert"></div>
-    </div>
-    <div id="Search-page" class="app" style="max-height: 100vh">
+    <section class="app">
       <div class="main-header">
         <!-- max view header -->
         <div class="container d-lg-block d-none big-header">
@@ -137,30 +143,143 @@
           </ul>
         </div>
       </div>
-      <div class="container-lg no-padding" style="min-height: 100vh">
-        <div class="search-page content">
-          <div class="d-flex flex-column flex-lg-row" style="gap: 40px">
-            <div class="col-lg-3 col-12 g-0" style="flex-shrink: unset">
-              <div class="search-page-filter">
-                <h3 class="">Search Results</h3>
-                <ul class="filter-option-list" style="height: fit-content"></ul>
-              </div>
-            </div>
-            <div class="col-lg-9 col-12 g-0" style="flex-shrink: unset">
-              <div class="search-results">
-                <div class="search-results-list"></div>
-                <div class="load_more" style="padding: 0; margin-top: 10px">
-                  <button
-                    class="d-flex justify-content-center align-items-center"
-                  >
-                    Load More
-                  </button>
+      <div class="container-lg no-padding media-page" style="min-height: 100vh">
+        <div class="main-content d-flex flex-column">
+          <div class="title-movies">
+            <h2 class="mb-4">Popular Movies</h2>
+          </div>
+          <div class="content d-flex flex-lg-row flex-column w-100">
+            <div class="d-block d-flex flex-column" style="width: 300px">
+              <div class="sort w-100">
+                <div
+                  class="sort-heading d-flex flex-row align-items-center justify-content-between flex-nowrap"
+                  style="padding: 14px 16px"
+                >
+                  <h2 class="my-auto">Sort</h2>
+                  <span class="sort-icon-panel fa-rotate-90"></span>
                 </div>
+                <div class="sort-panel d-flex flex-column w-100">
+                  <h3>Sort Results By</h3>
+                  <select
+                    id="sort_by"
+                    name="sort_by"
+                    class="kendo_dropdown full_width font_size_1"
+                  >
+                    <option value="popularity.desc" selected>
+                      Popularity Descending
+                    </option>
+                    <option value="popularity.asc">Popularity Ascending</option>
+                    <option value="vote_average.desc">Rating Descending</option>
+                    <option value="vote_average.asc">Rating Ascending</option>
+                    <option value="primary_release_date.desc">
+                      Release Date Descending
+                    </option>
+                    <option value="primary_release_date.asc">
+                      Release Date Ascending
+                    </option>
+                    <option value="title.asc">Title (A-Z)</option>
+                    <option value="title.desc">Title (Z-A)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="filter mt-3 w-100">
+                <div
+                  class="filter-heading w-100 d-flex flex-row align-items-center justify-content-between flex-nowrap"
+                  style="padding: 14px 16px"
+                >
+                  <h2 class="my-auto">Filters</h2>
+                  <span class="filter-icon-panel fa-rotate-90">
+                    <img src="./assets/" alt="" />
+                  </span>
+                </div>
+                <div class="filter-panel">
+                  <h3>Release Dates</h3>
+                  <div class="year-column d-flex justify-content-between mt-2">
+                    <span
+                      class="d-inline-flex align-items-center"
+                      style="font-size: 0.9em; color: #a4a4a4"
+                      >from</span
+                    >
+                    <div class="date-picker d-flex flex-row">
+                      <input
+                        type="text"
+                        name="date-from"
+                        id="datepicker-from"
+                        class="position-relative"
+                      />
+                      <span
+                        id="date-icon-from"
+                        class="d-flex align-content-center justify-content-between"
+                      >
+                        <i class="m-auto fa-sharp fa-regular fa-calendar"></i>
+                      </span>
+                    </div>
+                    <div id="date-picker-popup-from" class="date-picker-popup">
+                      <!-- Nội dung của popup chọn ngày/tháng/năm sẽ được thêm vào đây -->
+                    </div>
+                  </div>
+                  <div class="year-column d-flex justify-content-between mt-2">
+                    <span
+                      class="d-inline-flex align-items-center"
+                      style="font-size: 0.9em; color: #a4a4a4"
+                      >to</span
+                    >
+                    <div class="date-picker d-flex flex-row">
+                      <input
+                        type="text"
+                        name="date-to"
+                        id="datepicker-to"
+                        class="position-relative"
+                      />
+                      <span
+                        id="date-icon-to"
+                        class="d-flex align-content-center justify-content-between"
+                      >
+                        <i class="m-auto fa-sharp fa-regular fa-calendar"></i>
+                      </span>
+                    </div>
+                    <div id="date-picker-popup-to" class="date-picker-popup">
+                      <!-- Nội dung của popup chọn ngày/tháng/năm sẽ được thêm vào đây -->
+                    </div>
+                  </div>
+                </div>
+                <div class="filter-panel">
+                  <h3>Genres</h3>
+                  <ul id="with-genres">
+                    <!-- all genre -->
+                  </ul>
+                </div>
+                <div class="filter-panel">
+                  <h3>Keywords</h3>
+                  <input
+                    id="with-keyword"
+                    class="w-100"
+                    type="text"
+                    placeholder="Filter by Keywords..."
+                  />
+                </div>
+              </div>
+              <div class="btn-search mt-4 w-100">Search</div>
+            </div>
+            <!-- Movies  -->
+            <div class="content-media container-fluid">
+              <div class="row m-0 gap-lg-3">
+                <!-- Content Movies -->
+              </div>
+              <!-- Load More -->
+              <div class="load_more">
+                <button
+                  class="d-flex justify-content-center align-items-center"
+                >
+                  Load More
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <div class="main-footer">
         <div class="container-lg no-padding">
           <div
@@ -241,9 +360,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </body>
   <script src="./bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="./scripts/app.js"></script>
-  <script src="./scripts/search.js"></script>
+  <script src="./scripts/tvs.js"></script>
 </html>

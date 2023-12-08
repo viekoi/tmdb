@@ -91,10 +91,9 @@ searchFilter.start();
 
 const searchResults = {
   pageNumber: 1,
-  pageSize: 20,
+  pageSize: 10,
   handleEvents() {
     const searchResultsList = $(".search-results-list");
-
     fetch(
       `https://tmdb-backend-phi.vercel.app/api/${searchFilter.getCurrentModel()}byfilter`,
       {
@@ -110,6 +109,7 @@ const searchResults = {
         return res.json();
       })
       .then((data) => {
+        console.log(data)
         const options = {
           year: "numeric",
           month: "short",
@@ -120,7 +120,7 @@ const searchResults = {
           const dt = new Date(media.releasedDay);
           return `
           <div class="search-results-option d-flex">
-         
+
             <div class="poster">
               <a
                   href="${searchFilter.getCurrentModel()}.html/${media.id}"
@@ -132,17 +132,14 @@ const searchResults = {
                   />
                 </a>
             </div>
-              
-          
 
             <div class="details">
               <div class="title">
-              
+
                   <a
                     href="${searchFilter.getCurrentModel()}.html/${media.id}"
                     ><h2>${media.title}</h2></a
                   >
-             
 
                 <span class="release_date"
                   >${dt.toLocaleDateString("en-US", options)}</span
@@ -153,7 +150,7 @@ const searchResults = {
                 <p>${media.overview}</p>
               </div>
             </div>
-         
+
         </div>
       `;
         });
@@ -162,11 +159,12 @@ const searchResults = {
   },
   onChangeModel() {
     let previousUrl = "";
-    const _this = this
+    const _this = this;
     const observer = new MutationObserver(function (mutations) {
       if (window.location.href !== previousUrl) {
         previousUrl = window.location.href;
-        _this.handleEvents()
+        _this.pageNumber = 1
+        _this.handleEvents();
       }
     });
     const config = { subtree: true, childList: true };
@@ -174,9 +172,78 @@ const searchResults = {
     // start listening to changes
     observer.observe(document, config);
   },
+  loadMoreContent() {
+    const loadMoreButton = $(".load_more button");
+    const searchResultsList = $(".search-results-list");
+    loadMoreButton.addEventListener("click", () => {
+      ++this.pageNumber;
+      fetch(
+        `https://tmdb-backend-phi.vercel.app/api/${searchFilter.getCurrentModel()}byfilter`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            title: searchFilter.getTitle(),
+            pageNumber: this.pageNumber,
+            pageSize: this.pageSize,
+          }),
+        }
+      )
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          const options = {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          };
+
+          data.media.forEach((media) => {
+            const dt = new Date(media.releasedDay);
+            const markup = `
+            <div class="search-results-option d-flex">
+  
+              <div class="poster">
+                <a
+                    href="${searchFilter.getCurrentModel()}.html/${media.id}"
+                  >
+                    <img
+                      loading="lazy"
+                      src="${media.imageUrl}"
+                      alt="${media.title}"
+                    />
+                  </a>
+              </div>
+  
+              <div class="details">
+                <div class="title">
+  
+                    <a
+                      href="${searchFilter.getCurrentModel()}.html/${media.id}"
+                      ><h2>${media.title}</h2></a
+                    >
+  
+                  <span class="release_date"
+                    >${dt.toLocaleDateString("en-US", options)}</span
+                  >
+                </div>
+  
+                <div class="overview">
+                  <p>${media.overview}</p>
+                </div>
+              </div>
+  
+          </div>
+        `;
+            searchResultsList.insertAdjacentHTML(`beforeend`, markup);
+          });
+        });
+    });
+  },
   start() {
     this.handleEvents();
-    this.onChangeModel()
+    this.onChangeModel();
+    this.loadMoreContent();
   },
 };
 searchResults.start();

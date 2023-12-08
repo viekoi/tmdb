@@ -9,12 +9,9 @@ const signupForm = {
       event.preventDefault();
       if (this.validateForm()) {
         const formData = new FormData(formElement);
-
         const body = {
           userName: formData.get("userName"),
         };
-
-
         fetch("https://tmdb-backend-phi.vercel.app/api/login", {
           method: "POST",
           headers: {

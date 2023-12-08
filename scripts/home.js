@@ -143,17 +143,12 @@ const homeSearchForm = {
     const formElement = $(".home-search .home-search_form");
     formElement.addEventListener("submit", (event) => {
       event.preventDefault();
-
       const formData = new FormData(formElement);
-
       const title = formData.get("title");
       const searchParams = new URLSearchParams();
-
       searchParams.set("title", title);
       searchParams.set("model", "movies");
-
       const searchUrl = `search.html?${searchParams.toString()}`;
-
       window.location.href = searchUrl;
     });
   },
