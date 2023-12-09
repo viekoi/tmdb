@@ -123,7 +123,7 @@ const searchResults = {
 
             <div class="poster">
               <a
-                  href="${searchFilter.getCurrentModel()}.html/${media.id}"
+                  href="${searchFilter.getCurrentModel()==="movies"? "movieDetail":"tvDetail"}.html?id=${media.id}"
                 >
                   <img
                     loading="lazy"

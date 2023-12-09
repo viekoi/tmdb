@@ -17,7 +17,7 @@ const trending = {
         data.forEach((movie) => {
           const dt = new Date(movie.releasedDay);
           const markup = `
-       <a href="/movies/${movie.id}" class="movie-card">
+       <a href="movieDetail.html?id=${movie.id}" class="movie-card">
         <img class="movie-card-img" src="${
           movie.imageUrl
         }" alt="Card image cap">

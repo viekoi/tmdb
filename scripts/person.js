@@ -2,7 +2,7 @@ const personPage = {
   hanldeEvents() {
     const urlParams = new URLSearchParams(window.location.search);
     const personId = urlParams.get("id");
-    console.log(personId)
+    console.log(personId);
     fetch(`https://tmdb-backend-phi.vercel.app/api/people/${personId}`, {
       method: "GET",
     })
@@ -39,8 +39,14 @@ const personPage = {
             $("#person_img").src = data[key];
           } else if (key == "castIn") {
             data[key].forEach((child) => {
-              let html = `<a href="/movie.html?id=${child.media.id}"><li class="movie_card">
-                        <img class="movie_img" src="${child.media.imageUrl}" alt="">
+              let html = `<a href="${
+                child.media.mediaType === "movie"
+                  ? "movieDetail.html"
+                  : "tvDetail.html"
+              }?id=${child.media.id}"><li class="movie_card">
+                        <img class="movie_img" src="${
+                          child.media.imageUrl
+                        }" alt="">
                         <div class="movie_title">${child.media.title}</div>
                       </li></a>`;
               $(".movies_container").insertAdjacentHTML("beforeend", html);

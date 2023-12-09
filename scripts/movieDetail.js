@@ -126,7 +126,7 @@ window.addEventListener("scroll", function () {
                           });
                           const result = await res.json();
                           actor += `<li class="card">
-                                      <a class="p-0 me-0 w-100" href="#"><img class="h-100 w-100" src="${cast.person.imageUrl}" alt=""></a>
+                                      <a class="p-0 me-0 w-100" href="/person.html?id=${cast.person.id}"><img class="h-100 w-100" src="${cast.person.imageUrl}" alt=""></a>
                                       <p><a class="full-name" href="#">${cast.person.fullName}</a></p>
                                       <p class="character">${cast.character}</p>
                                     </li>`;
@@ -149,7 +149,7 @@ window.addEventListener("scroll", function () {
                       <h3>Backdrop</h3>
                       <img class="w-100 mb" src="${movie.backDropImageUrl}" alt="">
                     </div>
-                    <div class="trailer">
+                    <div class="trailer pb-5">
                         <h3>Trailer</h3>
                         <div class="w-100 d-flex">                    
                           <iframe class="w-100 justify-content-center mx-auto" width="1396" height="672" src="${movie.trailerUrl}" title="Oppenheimer | New Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -172,7 +172,7 @@ window.addEventListener("scroll", function () {
   const more_info = $(".more-info");
   const greyColumn = {
     mountUi:function () {
-      fetch(`https://tmdb-backend-phi.vercel.app/api/movies/${movie_Id}`,{
+      fetch(`https://tmdb-backend-phi.vercel.app/api/tvs/${movie_Id}`,{
         method: "GET",
       })
         .then((res) => {

@@ -18,10 +18,10 @@ window.addEventListener("scroll", function () {
   
   // Sử dụng biểu thức chính quy để trích xuất đường dẫn URL từ chuỗi CSS
   const urlRegex = /url\(['"]?(.*?)['"]?\)/;
-  const match = backgroundImageCSS.match(urlRegex);
+  const match_tvshow = backgroundImageCSS.match(urlRegex);
   
-  const urlParams = new URLSearchParams(window.location.search);
-  const movie_Id = urlParams.get("id");
+  const urlParams_tvshows = new URLSearchParams(window.location.search);
+  const tivishow_id = urlParams_tvshows.get("id");
   
   const movie_info = $(".poster-info");
   const info = {
@@ -31,7 +31,7 @@ window.addEventListener("scroll", function () {
           month: "short",
           day: "numeric",
         };
-      fetch(`https://tmdb-backend-phi.vercel.app/api/tvs/${movie_Id}`,{
+      fetch(`https://tmdb-backend-phi.vercel.app/api/tvs/${tivishow_id}`,{
         method: "GET",
       })
         .then((res) => {
@@ -63,8 +63,8 @@ window.addEventListener("scroll", function () {
               }
           });
           // Gắn đường dẫn backdrop cho background image của info movie
-              if (match && match.length > 1) {
-                const imageURL = match[1];
+              if (match_tvshow && match_tvshow.length > 1) {
+                const imageURL = match_tvshow[1];
   
                 // Đổi đường dẫn URL mới
                 const newImageURL = `${movie.backDropImageUrl}`
@@ -109,7 +109,7 @@ window.addEventListener("scroll", function () {
   const casts = $(".casts");
   const whiteColumn = { 
       mountUi:function () {
-      fetch(`https://tmdb-backend-phi.vercel.app/api/tvs/${movie_Id}`,{
+      fetch(`https://tmdb-backend-phi.vercel.app/api/tvs/${tivishow_id}`,{
         method: "GET",
       })
         .then((res) => {
@@ -127,7 +127,7 @@ window.addEventListener("scroll", function () {
                           });
                           const result = await res.json();
                           actor += `<li class="card">
-                                      <a class="p-0 me-0 w-100" href="#"><img class="h-100 w-100" src="${cast.person.imageUrl}" alt=""></a>
+                                      <a class="p-0 me-0 w-100" href="person.html?id=${cast.person.id}"><img class="h-100 w-100" src="${cast.person.imageUrl}" alt=""></a>
                                       <p><a class="full-name" href="#">${cast.person.fullName}</a></p>
                                       <p class="character">${cast.character}</p>
                                     </li>`;
@@ -150,7 +150,7 @@ window.addEventListener("scroll", function () {
                       <h3>Backdrop</h3>
                       <img class="w-100 mb" src="${movie.backDropImageUrl}" alt="">
                     </div>
-                    <div class="trailer">
+                    <div class="trailer pb-5">
                         <h3>Trailer</h3>
                         <div class="w-100 d-flex">                    
                           <iframe class="w-100 justify-content-center mx-auto" width="1396" height="672" src="${movie.trailerUrl}" title="Oppenheimer | New Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -173,7 +173,7 @@ window.addEventListener("scroll", function () {
   const more_info = $(".more-info");
   const greyColumn = {
     mountUi:function () {
-      fetch(`https://tmdb-backend-phi.vercel.app/api/movies/${movie_Id}`,{
+      fetch(`https://tmdb-backend-phi.vercel.app/api/tvs/${tivishow_id}`,{
         method: "GET",
       })
         .then((res) => {
